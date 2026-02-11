@@ -13,7 +13,7 @@ class ejercicios:
         datos = [(i, None) for i in range(1, 13)] 
         self.df= pd.DataFrame(data=datos,columns=["#ejercicio", "valor"])
         self.ruta_raiz=os.path.abspath(os.getcwd())
-        self.ruta_Actividad_3 = self.ruta_raiz # ya estás en src/evidencias/actividad_3
+        self.ruta_Actividad_3 = os.path.join(self.ruta_raiz, "src", "evidencias", "actividad_3")
         os.makedirs(self.ruta_Actividad_3, exist_ok=True) # asegura que la carpeta exista
         
     def ejercicio1(self):

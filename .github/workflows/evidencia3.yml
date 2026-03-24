@@ -1,0 +1,39 @@
+name: Evidencia 3
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: paso1 - actualizar pip
+        run: python -m pip install --upgrade pip      
+
+      - name: paso2 - instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: paso3 - Ejecutar notebook Evidencia 3
+        run: |
+          pip install nbconvert jupyter
+          jupyter nbconvert --to notebook --execute src/evidencias/actividad_3/Evidencia_3.ipynb --output Evidencia_3_output.ipynb --output-dir src/evidencias/actividad_3
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Evidencia 3 ejecutada y actualizada"
+          commit_user_name: "Ubert Toro [GitHub Actions]"
+          commit_user_email: "alonso.toro@est.iudigital.edu.co"
+          commit_author: "Ubert Toro <alonso.toro@est.iudigital.edu.co>"
+          file_pattern: src/evidencias/actividad_3/Evidencia_3_output.ipynb

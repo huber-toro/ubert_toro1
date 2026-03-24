@@ -1,5 +1,4 @@
-
-name: Entregables 1,2,3
+name: Evidencia 3
 on:
   push:
     branches: [ main ]
@@ -25,21 +24,16 @@ jobs:
       - name: paso2 - instalar dependencias
         run: pip install -r requirements.txt
 
-      - name: paso3 - Ejecutar script actividad 1
-        run: python src/actividad_1.py
-
-      - name: paso4 - Ejecutar script actividad 2
-        run: python src/actividad_2.py
-
-      - name: paso5 - Ejecutar script actividad 3
-        run: python src/actividad_3.py
+      - name: paso3 - Ejecutar notebook Evidencia 3
+        run: |
+          pip install nbconvert
+          jupyter nbconvert --to notebook --execute notebooks/Evidencia_3.ipynb --output notebooks/Evidencia_3_output.ipynb
 
       - name: Commit and Push changes
-
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Entregables_actividad_1,2 y 3
-          commit_user_name: ubert Toro [GitHub Actions]
-          commit_user_email: alonso.toro@est.iudigital.edu.co
-          commit_author: ubert toro <alonso.toro@est.iudigital.edu.co>
-          file_pattern: src/evidencias/actividad_3/*
+          commit_message: "Evidencia 3 ejecutada y actualizada"
+          commit_user_name: "Ubert Toro [GitHub Actions]"
+          commit_user_email: "alonso.toro@est.iudigital.edu.co"
+          commit_author: "Ubert Toro <alonso.toro@est.iudigital.edu.co>"
+          file_pattern: notebooks/Evidencia_3_output.ipynb

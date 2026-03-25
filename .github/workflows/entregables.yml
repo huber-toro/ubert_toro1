@@ -26,8 +26,8 @@ jobs:
 
       - name: paso3 - Ejecutar notebook Evidencia 3
         run: |
-          pip install nbconvert
-          jupyter nbconvert --to notebook --execute notebooks/Evidencia_3.ipynb --output notebooks/Evidencia_3_output.ipynb
+          pip install nbconvert jupyter
+          jupyter nbconvert --to notebook --execute src/evidencias/actividad_3/Evidencia_3.ipynb --output Evidencia_3_output.ipynb --output-dir src/evidencias/actividad_3
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -36,4 +36,4 @@ jobs:
           commit_user_name: "Ubert Toro [GitHub Actions]"
           commit_user_email: "alonso.toro@est.iudigital.edu.co"
           commit_author: "Ubert Toro <alonso.toro@est.iudigital.edu.co>"
-          file_pattern: notebooks/Evidencia_3_output.ipynb
+          file_pattern: src/evidencias/actividad_3/Evidencia_3_output.ipynb
